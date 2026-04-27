@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seek &amp; Find: Mystic Home — Hidden Object Adventure</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --night: #141018;
+            --bloom: #1f1824;
+            --glow: #3d2f4a;
+            --ember: #d4a574;
+            --honey: #e8c87a;
+            --mist: #c4b8c8;
+            --cream: #f6f0e6;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--night);
+            min-height: 100vh;
+            color: var(--mist);
+            padding: 28px 20px 40px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 90% 70% at 50% 0%, rgba(212, 165, 116, 0.12) 0%, transparent 55%),
+                radial-gradient(ellipse 60% 40% at 80% 100%, rgba(61, 47, 74, 0.45) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .sparkle {
+            position: fixed;
+            inset: 0;
+            opacity: 0.12;
+            background-image:
+                radial-gradient(1.5px 1.5px at 12% 18%, rgba(232, 200, 122, 0.9) 0%, transparent 100%),
+                radial-gradient(1.5px 1.5px at 55% 42%, rgba(244, 228, 200, 0.7) 0%, transparent 100%),
+                radial-gradient(1px 1px at 78% 8%, rgba(255, 255, 255, 0.5) 0%, transparent 100%),
+                radial-gradient(1.5px 1.5px at 30% 88%, rgba(212, 165, 116, 0.8) 0%, transparent 100%),
+                radial-gradient(1px 1px at 92% 55%, rgba(196, 184, 200, 0.6) 0%, transparent 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .wrap {
+            max-width: 640px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ornament {
+            text-align: center;
+            font-family: 'Fraunces', serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: rgba(232, 200, 122, 0.7);
+            margin-bottom: 24px;
+        }
+
+        .window {
+            border-radius: 22px;
+            padding: 1px;
+            background: linear-gradient(145deg, rgba(212, 165, 116, 0.45) 0%, rgba(61, 47, 74, 0.6) 50%, rgba(212, 165, 116, 0.25) 100%);
+            box-shadow:
+                0 24px 64px rgba(0, 0, 0, 0.45),
+                0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+        }
+
+        .inner {
+            border-radius: 21px;
+            background: linear-gradient(168deg, var(--bloom) 0%, #18121c 100%);
+            padding: 40px 32px 36px;
+        }
+
+        .scene {
+            height: 140px;
+            border-radius: 16px;
+            margin-bottom: 28px;
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(180deg, rgba(32, 28, 40, 0.4) 0%, rgba(8, 6, 10, 0.85) 100%),
+                linear-gradient(125deg, #2a2230 0%, #1a1520 40%, #252030 100%);
+            border: 1px solid rgba(212, 165, 116, 0.2);
+        }
+
+        .scene::after {
+            content: '';
+            position: absolute;
+            right: 12%;
+            top: 28%;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--honey);
+            box-shadow: 0 0 20px 4px rgba(232, 200, 122, 0.5);
+        }
+
+        .scene::before {
+            content: '';
+            position: absolute;
+            left: 18%;
+            bottom: 22%;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: rgba(244, 220, 180, 0.9);
+            box-shadow: 12px 8px 0 -1px rgba(196, 184, 200, 0.35);
+        }
+
+        h1 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(1.75rem, 5vw, 2.35rem);
+            font-weight: 700;
+            color: var(--cream);
+            text-align: center;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+
+        h1 .accent {
+            color: var(--honey);
+            font-style: italic;
+        }
+
+        .tagline {
+            text-align: center;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: rgba(212, 165, 116, 0.95);
+            margin-bottom: 22px;
+        }
+
+        .pills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .pill {
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: rgba(61, 47, 74, 0.4);
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            color: var(--mist);
+        }
+
+        .pill em {
+            font-style: normal;
+            color: var(--honey);
+        }
+
+        .lead {
+            color: #d8cfd8;
+            line-height: 1.82;
+            font-size: 1.05rem;
+            margin-bottom: 22px;
+        }
+
+        .lead strong {
+            color: var(--cream);
+        }
+
+        .subhead {
+            font-family: 'Fraunces', serif;
+            font-size: 0.95rem;
+            color: var(--honey);
+            margin: 26px 0 10px;
+        }
+
+        .grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .tile {
+            padding: 16px 18px;
+            border-radius: 14px;
+            background: rgba(31, 24, 36, 0.65);
+            border: 1px solid rgba(196, 184, 200, 0.12);
+            line-height: 1.7;
+        }
+
+        .tile h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 0.95rem;
+            color: var(--cream);
+            margin-bottom: 6px;
+        }
+
+        .tile p {
+            font-size: 0.95rem;
+            color: #c9bec9;
+        }
+
+        .cta {
+            display: block;
+            text-align: center;
+            margin-top: 32px;
+            padding: 16px 24px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #1a1412;
+            background: linear-gradient(175deg, var(--honey) 0%, var(--ember) 100%);
+            box-shadow: 0 10px 32px rgba(212, 165, 116, 0.25);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 40px rgba(232, 200, 122, 0.3);
+        }
+
+        .foot {
+            margin-top: 28px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #7a6d82;
+        }
+
+        .foot a {
+            color: var(--honey);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .foot a:hover {
+            color: var(--cream);
+        }
+
+        @media (max-width: 520px) {
+            .inner { padding: 28px 20px 24px; }
+            .scene { height: 120px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sparkle" aria-hidden="true"></div>
+    <div class="wrap">
+        <p class="ornament">Puzzle · Hidden objects</p>
+
+        <div class="window">
+            <div class="inner">
+                <div class="scene" role="img" aria-label="Stylized cozy room silhouette suggesting hidden object gameplay"></div>
+
+                <h1>Seek <span class="accent">&amp; Find</span>: Mystic Home</h1>
+                <p class="tagline">Find hidden secrets fast</p>
+
+                <div class="pills">
+                    <span class="pill"><em>Free</em></span>
+                    <span class="pill">Puzzle</span>
+                    <span class="pill">iPhone &amp; iPad</span>
+                    <span class="pill">Ages 4+</span>
+                </div>
+
+                <p class="lead"><strong>Step into a home full of whispers and wonder.</strong> Seek &amp; Find: Mystic Home is a relaxing yet addictive hidden object adventure. Explore hand-crafted rooms, search for cleverly tucked-away items, and let your attention to detail lead you through a calm, magical world.</p>
+
+                <p class="subhead">What you will do</p>
+                <div class="grid">
+                    <div class="tile">
+                        <h3>Search &amp; discover</h3>
+                        <p>Stroll through rich scenes filled with objects to find. Every level nudges you to look closer and spot what does not quite belong in plain sight.</p>
+                    </div>
+                    <div class="tile">
+                        <h3>At your own rhythm</h3>
+                        <p>Enjoy a gentle pace, or add pressure with a timer. Clear the list before the clock if you like a brisk challenge.</p>
+                    </div>
+                    <div class="tile">
+                        <h3>Spaces that feel lived-in</h3>
+                        <p>Cozy corners, warm light, and a bit of quiet magic—scenes are built to be pleasant to sit in, not just to “finish.”</p>
+                    </div>
+                    <div class="tile">
+                        <h3>Easy to start, fun to master</h3>
+                        <p>Simple touch controls, colorful art, and difficulty that grows as you go. Suitable for a wide range of players looking to unwind and focus.</p>
+                    </div>
+                </div>
+
+                <a href="https://apps.apple.com/us/app/seek-find-mystic-home/id1013795840?uo=4" class="cta" target="_blank" rel="noopener noreferrer">Get it on the App Store</a>
+
+                <div class="foot">
+                    <p><a href="privacy.html">Privacy</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

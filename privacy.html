@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy — Seek &amp; Find: Mystic Home</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --night: #131016;
+            --card: #1c161f;
+            --ink: #e5dde8;
+            --soft: #a89bab;
+            --honey: #e0c27a;
+            --edge: rgba(224, 194, 122, 0.28);
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--night);
+            color: var(--soft);
+            min-height: 100vh;
+            line-height: 1.75;
+        }
+
+        .drape {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(32, 26, 40, 0.5) 0%, var(--night) 38%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .page {
+            position: relative;
+            z-index: 1;
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 32px 22px 56px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(196, 184, 200, 0.15);
+        }
+
+        .kicker {
+            font-family: 'Fraunces', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(224, 194, 122, 0.75);
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(1.45rem, 4vw, 1.9rem);
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1.25;
+        }
+
+        .date {
+            margin-top: 12px;
+            font-size: 0.88rem;
+            color: #7d6f8a;
+        }
+
+        .intro {
+            background: var(--card);
+            border: 1px solid var(--edge);
+            border-radius: 16px;
+            padding: 20px 22px;
+            margin-bottom: 28px;
+            color: #cec4d2;
+        }
+
+        .intro strong {
+            color: var(--honey);
+        }
+
+        details {
+            margin-bottom: 14px;
+            border: 1px solid rgba(196, 184, 200, 0.12);
+            border-radius: 14px;
+            background: rgba(28, 22, 31, 0.6);
+            overflow: hidden;
+        }
+
+        details[open] {
+            border-color: var(--edge);
+        }
+
+        summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 16px 18px;
+            font-family: 'Fraunces', serif;
+            font-size: 1.02rem;
+            font-weight: 600;
+            color: var(--ink);
+            position: relative;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: '▸';
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%) rotate(0deg);
+            color: var(--honey);
+            font-size: 0.9rem;
+            transition: transform 0.2s;
+        }
+
+        details[open] summary::after {
+            transform: translateY(-50%) rotate(90deg);
+        }
+
+        .panel {
+            padding: 0 18px 18px;
+            font-size: 0.95rem;
+        }
+
+        .panel p + p {
+            margin-top: 10px;
+        }
+
+        .panel strong {
+            color: #d4cad8;
+        }
+
+        .note {
+            margin-top: 12px;
+            padding: 12px 14px;
+            border-radius: 10px;
+            background: rgba(224, 194, 122, 0.08);
+            border: 1px solid rgba(224, 194, 122, 0.2);
+            font-size: 0.88rem;
+        }
+
+        .back {
+            margin-top: 40px;
+            text-align: center;
+            font-family: 'Fraunces', serif;
+            font-size: 0.95rem;
+        }
+
+        .back a {
+            color: var(--honey);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back a:hover {
+            color: var(--ink);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="drape" aria-hidden="true"></div>
+    <div class="page">
+        <header>
+            <p class="kicker">Seek &amp; Find: Mystic Home</p>
+            <h1>Privacy notice</h1>
+            <p class="date">Last updated: April 27, 2026. Applies to the iOS and iPadOS app distributed on the App Store under this product name.</p>
+        </header>
+
+        <p class="intro">This notice explains, in clear language, what <strong>Seek &amp; Find: Mystic Home</strong> is described as doing with information when you play. It is not legal advice. If anything here disagrees with the “App Privacy” section on the official store listing, treat the <strong>store’s label and descriptions for your installed version</strong> as the short summary that Apple shows to users.</p>
+
+        <details>
+            <summary>Summary: data not collected in-app by the app developer</summary>
+            <div class="panel">
+                <p>According to the public App Store disclosure, <strong>this app is listed with “Data Not Collected”</strong> in the store’s own terminology. In other words, that summary does not present the app as shipping personal data off the device to an operator for analytics, ad profiling, or an in-app account system, as of the disclosure shown there.</p>
+                <p class="note">If you update the game or the store text changes, open the app’s product page in the store and re-read the privacy details shown for the build you use.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Data that may exist only on your device</summary>
+            <div class="panel">
+                <p>Even when the app is not described on the store as <strong>collecting</strong> data in the sense above, a game can still <strong>save information locally</strong> so you can keep progress, preferences, and similar state between sessions. That data ordinarily stays on the device unless a separate system feature you turned on (such as an encrypted device backup) copies it according to your settings.</p>
+                <p>Removing the app from a device typically deletes the app’s local data except what may be held in backups; managing backups is a device and account setting outside this game file.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Platform, store, and optional Apple features</summary>
+            <div class="panel">
+                <p>Installing, licensing, and updating the app is handled <strong>through Apple’s App Store and operating system</strong>. Apple may process data related to the store, device, and your Apple ID in line with their policies, which are separate from the app’s own play loop.</p>
+                <p>The product page may mention <strong>Game Center</strong> (for example, leaderboards). If you use Game Center, related activity is subject to <strong>Apple’s Game Center terms and settings</strong>, not described in this static document.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Ads and age information</summary>
+            <div class="panel">
+                <p>Store metadata may list features such as the presence of advertising, depending on the version. How ads behave, and what the system shares for them, is governed by <strong>the store build, the ad frameworks in use, and your device and Apple ID privacy settings</strong>. Read the live store label for the version you have installed for the most accurate high-level view.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Users under parental guidance</summary>
+            <div class="panel">
+                <p>Seek &amp; Find: Mystic Home is published with a low age band on the store, but <strong>parents and guardians</strong> remain responsible for deciding whether a title fits a child, and for using <strong>Screen Time, purchase controls, and other Apple family tools</strong> as they consider appropriate.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Changes to this page</summary>
+            <div class="panel">
+                <p>When gameplay or public disclosures change, this notice may be revised. The <strong>“Last updated”</strong> line at the top will move when the text is edited. The store page may still be updated on a different schedule.</p>
+            </div>
+        </details>
+
+        <p class="back"><a href="index.html">Back to the game page</a></p>
+    </div>
+</body>
+
+</html>
